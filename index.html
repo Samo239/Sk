@@ -578,9 +578,14 @@ function updateStars() {
     ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
     ctx.fill();
     if (star.word) {
-      ctx.font = "14px Segoe UI";
-      ctx.fillStyle = "#cc3366";
-      ctx.fillText(star.word, star.x - 10, star.y);
+  ctx.font = "14px Segoe UI";
+  star.width = ctx.measureText(star.word).width;
+  star.height = 14;
+  ctx.fillStyle = "#cc3366";
+  ctx.fillText(star.word, star.x - star.width / 2, star.y);
+}
+
+    
     }
   }
 }
