@@ -596,8 +596,29 @@ function startStars() {
   if (!starInterval) {
     starInterval = setInterval(createStar, 300);
     animateStars();
+    
   }
 }
+canvas.addEventListener("click", function(event) {
+  const rect = canvas.getBoundingClientRect();
+  const clickX = event.clientX - rect.left;
+  const clickY = event.clientY - rect.top;
+
+  for (let i = 0; i < stars.length; i++) {
+    const star = stars[i];
+    if (star.word && star.width && star.height) {
+      const left = star.x - star.width / 2;
+      const right = star.x + star.width / 2;
+      const top = star.y - star.height;
+      const bottom = star.y;
+
+      if (clickX >= left && clickX <= right && clickY >= top && clickY <= bottom) {
+        showStarMessage(star.word);
+        break;
+      }
+    }
+  }
+});
 
 function stopStars() {
   clearInterval(starInterval);
