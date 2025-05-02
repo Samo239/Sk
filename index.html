@@ -619,6 +619,29 @@ canvas.addEventListener("click", function(event) {
     }
   }
 });
+  function showStarMessage(word) {
+  const message = wordMessages[word] || `Դու ընտրեցիր՝ ${word}։`;
+  const messageBox = document.createElement("div");
+  messageBox.textContent = message;
+  messageBox.style.position = "fixed";
+  messageBox.style.top = "30%";
+  messageBox.style.left = "50%";
+  messageBox.style.transform = "translate(-50%, -50%)";
+  messageBox.style.background = "#fff0f5";
+  messageBox.style.color = "#d1005d";
+  messageBox.style.padding = "20px 30px";
+  messageBox.style.borderRadius = "15px";
+  messageBox.style.boxShadow = "0 0 10px rgba(0,0,0,0.2)";
+  messageBox.style.zIndex = "999";
+  messageBox.style.fontSize = "18px";
+  messageBox.style.fontWeight = "bold";
+  document.body.appendChild(messageBox);
+
+  setTimeout(() => {
+    messageBox.remove();
+  }, 3000);
+}
+
 
 function stopStars() {
   clearInterval(starInterval);
